@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Form</title>
+
+</head>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #444;
+    text-align: center;
+    font-size: 24px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+</style>
+<body>
+    <div class="form-container">
+        <h2>EMI Entry Form</h2>
+        <form id="emiForm" action="/submit-emi" method="POST">
+            <div class="form-group">
+                <label for="emiName">EMI Name</label>
+                <input type="text" id="emiName" name="emiName" required placeholder="Enter EMI name">
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" name="amount" required placeholder="Enter amount">
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date</label>
+                <input type="date" id="dueDate" name="dueDate" required>
+            </div>
+            <div class="form-group">
+                <label for="renewalPeriod">Renewal Period</label>
+                <input type="number" id="renewalPeriod" name="renewalPeriod" required placeholder="e.g., Monthly, Quarterly">
+            </div>
+            <div class="form-group">
+                <label for="reminder">Reminder Date</label>
+                <input type="date" id="reminder" name="reminder" required>
+            </div>
+            <div class="form-group">
+                <label for="note">Note</label>
+                <textarea id="note" name="note" required placeholder="Enter a note"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit EMI</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenses</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f6fa;
+            color: #333;
+            display: flex;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        /* body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f6fa;
+            color: #333;
+            display: flex;
+        } */
+        .sidebar {
+            width: 250px;
+            background: #1f2937;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar h1 {
+            color: #ffffff;
+            margin: 0 0 30px;
+            font-size: 22px;
+            text-align: center;
+        }
+        .nav-item {
+            margin-bottom: 15px;
+        }
+        .nav-item a {
+            display: block;
+            text-decoration: none;
+            padding: 10px 15px;
+            color: #ffffff;
+            background: #374151;
+            border-radius: 8px;
+            transition: background 0.3s;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .nav-item a:hover {
+            background: #4b5563;
+        }
+        .logout-button {
+            display: block;
+            padding: 12px 20px;
+            color: #ffffff;
+            background: #dc3545;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.3s, box-shadow 0.3s;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        .logout-button:hover {
+            background: #e02d3d;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        .content {
+            margin-left: 270px;
+            padding: 40px;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="sidebar">
+        <div>
+            <h1>Expenses</h1>
+            <div class="nav-item">
+                <a href="//localhost:3002/dashboard"><i class="fas fa-wallet icon"></i>Dashboard</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/expenses"><i class="fas fa-wallet icon"></i>Expenses</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/savingsgoals"><i class="fas fa-piggy-bank icon"></i>Savings Goals</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/financialreports"><i class="fas fa-chart-line icon"></i>Financial Reports</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/billreminders"><i class="fas fa-bell icon"></i>Bill Reminders</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/investments"><i class="fas fa-chart-pie icon"></i>Investments</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/emis"><i class="fas fa-credit-card icon"></i>EMIs</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/subscriptions"><i class="fas fa-list icon"></i>Subscriptions</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/form"><i class="fas fa-list icon"></i>Add Credit Amount</a>
+            </div>
+            <div class="nav-item">
+                <a href="/dashboard/debitForm"><i class="fas fa-list icon"></i>Debit Amount</a>
+            </div>
+            <div class="nav-item">
+                <a href="http://localhost:3000"><i class="fas fa-list icon"></i>Notes</a>
+            </div>
+        </div>
+        <div class="nav-item">
+            <form action="/logout" method="post">
+                <button type="submit" class="logout-button">
+                    <i class="fas fa-sign-out-alt icon"></i>Logout
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Expenses</h1>
+        <table>
+            <thead>
+                <tr>
+                    
+                    <th>Amount</th>
+                    <th>Date</th>
+                    
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% expenses.forEach(expense => { %>
+                    <tr>
+                        
+                        <td><%= expense.amount %></td>
+                        <td><%= new Date(expense.date).toLocaleDateString() %></td>
+                       
+                        <td><%= expense.notes %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>    
+   
+    
+</div>        
+</body>
+</html>
